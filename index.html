@@ -3,182 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Brand Store | Pan-India Delivery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>AURA | Official Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: #fafafa; color: #111; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
+        body { background-color: #f8f9fa; color: #1a1a1a; }
         
-        /* Top Bar */
-        .top-bar { background: #000; color: #fff; font-size: 0.8rem; text-align: center; padding: 0.5rem; letter-spacing: 0.5px; }
+        header { background: #ffffff; padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #edf2f7; position: sticky; top: 0; z-index: 100; }
+        .brand-logo { font-size: 1.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #111; }
+        .brand-logo span { color: #d97706; }
+        
+        .header-btns { display: flex; gap: 10px; }
+        .action-btn { background: #111; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 50px; cursor: pointer; font-weight: 500; font-size: 0.9rem; transition: background 0.2s; }
+        .action-btn:hover { background: #d97706; }
+        .admin-btn { background: #2563eb; }
 
-        /* Header */
-        header { background: #ffffff; border-bottom: 1px solid #eaeaea; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px; }
-        .logo span { color: #2563eb; }
-        .cart-btn { background: #000; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 30px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: background 0.2s; }
-        .cart-btn:hover { background: #2563eb; }
+        .hero-section { background: linear-gradient(135deg, #111111, #1f2937); color: white; padding: 4rem 2rem; text-align: center; margin: 2rem auto; max-width: 1200px; border-radius: 20px; }
+        .hero-section h1 { font-size: 2.3rem; font-weight: 700; margin-bottom: 0.8rem; }
+        .hero-section p { color: #9ca3af; font-size: 1rem; max-width: 600px; margin: 0 auto; }
 
-        /* Hero Banner */
-        .hero { background: linear-gradient(135deg, #0f172a, #1e293b); color: white; padding: 4rem 2rem; text-align: center; margin: 1.5rem auto; max-width: 1200px; border-radius: 16px; }
-        .hero h1 { font-size: 2.2rem; margin-bottom: 0.8rem; font-weight: 700; }
-        .hero p { color: #94a3b8; font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
-
-        /* Container */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 3rem 1.5rem; }
-        .section-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+        .main-container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 4rem 1.5rem; }
+        .category-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 1.5rem; color: #111; display: flex; justify-content: space-between; align-items: center; }
 
         /* Products Grid */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
-        .product-card { background: white; border: 1px solid #eaeaea; border-radius: 12px; overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
-        .img-container { position: relative; width: 100%; height: 240px; background: #f1f5f9; overflow: hidden; }
-        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-        .product-card:hover .img-container img { transform: scale(1.05); }
-        .badge { position: absolute; top: 12px; left: 12px; background: #ef4444; color: white; font-size: 0.75rem; font-weight: 700; padding: 0.3rem 0.6rem; border-radius: 4px; text-transform: uppercase; }
-        
-        .product-info { padding: 1.2rem; }
-        .product-info h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; color: #1e293b; }
-        .price-box { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
-        .current-price { font-size: 1.2rem; font-weight: 700; color: #000; }
-        .original-price { font-size: 0.95rem; color: #94a3b8; text-decoration: line-through; }
-        
-        .add-to-cart-btn { background: #000; color: white; border: none; padding: 0.7rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; transition: background 0.2s; }
-        .add-to-cart-btn:hover { background: #2563eb; }
+        .grid-box { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; }
+        .card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid #eaeaea; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .card-img-wrap { width: 100%; height: 250px; background: #f3f4f6; position: relative; overflow: hidden; }
+        .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .tag { position: absolute; top: 12px; left: 12px; background: rgba(17, 17, 17, 0.85); color: white; font-size: 0.7rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 30px; text-transform: uppercase; }
 
-        /* Modal Checkout */
-        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: white; padding: 2rem; border-radius: 16px; width: 90%; max-width: 450px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        .modal-content h3 { font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700; }
-        .cart-items-box { max-height: 150px; overflow-y: auto; margin-bottom: 1rem; border-bottom: 1px solid #eaeaea; padding-bottom: 0.5rem; font-size: 0.95rem; }
-        .modal-content input { width: 100%; padding: 0.8rem; margin: 0.4rem 0; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.95rem; outline: none; }
-        .modal-content input:focus { border-color: #2563eb; }
+        .card-details { padding: 1.2rem; }
+        .card-details h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; color: #1f2937; }
+        .pricing { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .price-now { font-size: 1.2rem; font-weight: 700; color: #111; }
+        .price-old { font-size: 0.9rem; color: #9ca3af; text-decoration: line-through; }
         
-        .checkout-whatsapp-btn { background: #16a34a; color: white; border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 700; font-size: 1rem; margin-top: 0.8rem; transition: background 0.2s; }
-        .checkout-whatsapp-btn:hover { background: #15803d; }
-        .close-modal-btn { background: #f1f5f9; color: #475569; border: none; padding: 0.6rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; margin-top: 0.5rem; }
+        .buy-now-btn { background: #111; color: white; border: none; padding: 0.7rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; }
+        .buy-now-btn:hover { background: #d97706; }
+        .delete-prod-btn { background: #fee2e2; color: #dc2626; border: none; padding: 0.4rem; border-radius: 6px; cursor: pointer; width: 100%; margin-top: 5px; font-size: 0.8rem; font-weight: 600; }
+
+        /* Modals */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-body { background: white; padding: 2rem; border-radius: 20px; width: 90%; max-width: 420px; box-shadow: 0 20px 25px rgba(0,0,0,0.1); }
+        .modal-body h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
+        .summary-box { max-height: 150px; overflow-y: auto; margin-bottom: 1rem; border-bottom: 1px solid #edf2f7; padding-bottom: 0.5rem; }
+        .modal-body input { width: 100%; padding: 0.8rem; margin: 0.4rem 0; border: 1px solid #d1d5db; border-radius: 8px; font-size: 0.9rem; outline: none; }
+        .modal-body input:focus { border-color: #d97706; }
         
-        /* Footer */
-        footer { background: #0f172a; color: #94a3b8; text-align: center; padding: 2rem; font-size: 0.9rem; margin-top: 3rem; }
+        .btn-primary { background: #16a34a; color: white; border: none; padding: 0.8rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 700; margin-top: 0.8rem; }
+        .btn-secondary { background: #f3f4f6; color: #4b5563; border: none; padding: 0.6rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; margin-top: 0.5rem; }
+
+        footer { background: #111; color: #9ca3af; text-align: center; padding: 2rem; font-size: 0.9rem; margin-top: 3rem; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">🔥 Free Pan-India Shipping on All Orders | Cash on Delivery Available</div>
-
     <header>
-        <div class="logo">The Brand <span>Store</span></div>
-        <button class="cart-btn" onclick="openCart()">Bag (<span id="cart-count">0</span>)</button>
+        <div class="brand-logo">AURA <span>.</span></div>
+        <div class="header-btns">
+            <button class="action-btn admin-btn" onclick="openAdminModal()">⚙️ Add Product</button>
+            <button class="action-btn" onclick="openCartModal()">Bag (<span id="bag-count">0</span>)</button>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="hero">
-            <h1>Elevate Your Everyday Style 🇮🇳</h1>
-            <p>Discover premium products curated for modern lifestyles. Delivered right to your doorstep across India.</p>
+    <div class="main-container">
+        <div class="hero-section">
+            <h1>Redefining Modern Essentials 🇮🇳</h1>
+            <p>Pan-India Delivery & Cash on Delivery Available.</p>
         </div>
 
-        <div class="section-title">Trending Products</div>
-        <div class="products-grid" id="product-list">
-            <!-- Dynamic Products -->
+        <div class="category-title">
+            <span>Featured Collection</span>
+        </div>
+        <div class="grid-box" id="dynamic-products"></div>
+    </div>
+
+    <!-- Add Product Admin Modal -->
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-body">
+            <h3>Add New Product</h3>
+            <input type="text" id="newTitle" placeholder="Product Name (e.g. Smart Watch)">
+            <input type="number" id="newPrice" placeholder="Selling Price (e.g. 799)">
+            <input type="number" id="newOldPrice" placeholder="MRP / Old Price (e.g. 1999)">
+            <input type="text" id="newTag" placeholder="Tag (e.g. Best Seller / Sale)">
+            <input type="text" id="newImage" placeholder="Image URL (Paste photo link)">
+            <button class="btn-primary" style="background:#2563eb;" onclick="addNewProduct()">Publish Product</button>
+            <button class="btn-secondary" onclick="closeAdminModal()">Close</button>
         </div>
     </div>
 
     <!-- Checkout Modal -->
-    <div class="modal" id="cartModal">
-        <div class="modal-content">
-            <h3>Complete Your Order</h3>
-            <div id="cart-items" class="cart-items-box"></div>
-            <input type="text" id="custName" placeholder="Full Name">
-            <input type="text" id="custAddress" placeholder="Full Delivery Address (City, State, PIN)">
-            <input type="text" id="custPhone" placeholder="Mobile Number">
-            <button class="checkout-whatsapp-btn" onclick="checkoutWhatsApp()">Place Order via WhatsApp</button>
-            <button class="close-modal-btn" onclick="closeCart()">Close</button>
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal-body">
+            <h3>Secure Checkout</h3>
+            <div id="modal-cart-items" class="summary-box"></div>
+            <input type="text" id="userName" placeholder="Full Name">
+            <input type="text" id="userAddress" placeholder="Complete Shipping Address (City, State, PIN)">
+            <input type="text" id="userPhone" placeholder="Mobile Number">
+            <button class="btn-primary" onclick="sendOrderWhatsApp()">Confirm Order via WhatsApp</button>
+            <button class="btn-secondary" onclick="closeCartModal()">Cancel</button>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 The Brand Store. Proudly serving customers across India.</p>
+        <p>&copy; 2026 AURA Official. Operated from India.</p>
     </footer>
 
     <script>
-        const products = [
-            { id: 1, name: "Pro Wireless Earbuds Active Noise Cancellation", price: 899, originalPrice: 1999, badge: "Sale", image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500" },
-            { id: 2, name: "Oversized Heavyweight Cotton Streetwear T-Shirt", price: 549, originalPrice: 1299, badge: "Trending", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" },
-            { id: 3, name: "Multipurpose Premium Executive Desk Organizer", price: 399, originalPrice: 799, badge: "Popular", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500" },
-            { id: 4, name: "Portable Studio LED Ring Light with Stand", price: 649, originalPrice: 1499, badge: "Hot", image: "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=500" }
+        // Initial Products (Agar local storage mein kuch nahi hai toh yeh dikhenge)
+        let storeProducts = JSON.parse(localStorage.getItem('myStoreProducts')) || [
+            { id: 1, name: "Aura Signature Wireless Pods", price: 999, oldPrice: 2499, tag: "Best Seller", image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500" },
+            { id: 2, name: "Aura Minimalist Heavyweight Tee", price: 599, oldPrice: 1499, tag: "New Drop", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500" }
         ];
 
-        let cart = [];
+        let userCart = [];
 
-        function displayProducts() {
-            const list = document.getElementById('product-list');
-            list.innerHTML = products.map(p => `
-                <div class="product-card">
-                    <div class="img-container">
-                        <span class="badge">${p.badge}</span>
-                        <img src="${p.image}" alt="${p.name}">
+        function renderStore() {
+            const container = document.getElementById('dynamic-products');
+            if(storeProducts.length === 0) {
+                container.innerHTML = "<p style='color:#666;'>No products added yet. Click 'Add Product' above.</p>";
+                return;
+            }
+            container.innerHTML = storeProducts.map(item => `
+                <div class="card">
+                    <div class="card-img-wrap">
+                        <span class="tag">${item.tag}</span>
+                        <img src="${item.image}" alt="${item.name}">
                     </div>
-                    <div class="product-info">
-                        <h3>${p.name}</h3>
-                        <div class="price-box">
-                            <span class="current-price">₹${p.price}</span>
-                            <span class="original-price">₹${p.originalPrice}</span>
+                    <div class="card-details">
+                        <h3>${item.name}</h3>
+                        <div class="pricing">
+                            <span class="price-now">₹${item.price}</span>
+                            <span class="price-old">₹${item.oldPrice}</span>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart(${p.id})">Add to Bag</button>
+                        <button class="buy-now-btn" onclick="addItemToBag(${item.id})">Add to Bag</button>
+                        <button class="delete-prod-btn" onclick="deleteProduct(${item.id})">Remove Product</button>
                     </div>
                 </div>
             `).join('');
         }
 
-        function addToCart(id) {
-            const product = products.find(p => p.id === id);
-            cart.push(product);
-            document.getElementById('cart-count').innerText = cart.length;
-            
-            // Subtle alert or badge pulse simulation
-            const btn = document.event;
-            alert(product.name + " added to your shopping bag!");
-        }
+        function openAdminModal() { document.getElementById('adminModal').style.display = 'flex'; }
+        function closeAdminModal() { document.getElementById('adminModal').style.display = 'none'; }
 
-        function openCart() {
-            const itemsDiv = document.getElementById('cart-items');
-            if(cart.length === 0) {
-                itemsDiv.innerHTML = "<p style='color:#64748b; text-align:center;'>Your bag is empty.</p>";
-            } else {
-                let total = cart.reduce((sum, item) => sum + item.price, 0);
-                itemsDiv.innerHTML = cart.map(item => `<div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>${item.name}</span><strong>₹${item.price}</strong></div>`).join('') + `<hr style="border:0; border-top:1px dashed #cbd5e1; margin:10px 0;"><div style="display:flex; justify-content:space-between; font-weight:700; font-size:1.1rem;"><span>Total Amount:</span><span>₹${total}</span></div>`;
-            }
-            document.getElementById('cartModal').style.display = 'flex';
-        }
+        function addNewProduct() {
+            const name = document.getElementById('newTitle').value;
+            const price = Number(document.getElementById('newPrice').value);
+            const oldPrice = Number(document.getElementById('newOldPrice').value);
+            const tag = document.getElementById('newTag').value;
+            const image = document.getElementById('newImage').value;
 
-        function closeCart() {
-            document.getElementById('cartModal').style.display = 'none';
-        }
-
-        function checkoutWhatsApp() {
-            const name = document.getElementById('custName').value;
-            const address = document.getElementById('custAddress').value;
-            const phone = document.getElementById('custPhone').value;
-
-            if(!name || !address || !phone) {
-                alert("Please fill in all shipping details!");
+            if(!name || !price || !image) {
+                alert("Please fill name, price and image URL!");
                 return;
             }
 
-            let orderText = `🛍️ *New Order Received (The Brand Store)*\n\n*Customer Details:*\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n*Ordered Items:*\n`;
-            let total = 0;
-            cart.forEach(item => {
-                orderText += `• ${item.name} - ₹${item.price}\n`;
-                total += item.price;
-            });
-            orderText += `\n*Total Payable: ₹${total}*`;
-
-            const encodedText = encodeURIComponent(orderText);
-            // Apna WhatsApp number yahan daal lena (Country code ke sath jaise 919999999999)
-            window.open(`https://wa.me/919999999999?text=${encodedText}`, '_blank');
+            const newProd = { id: Date.now(), name, price, oldPrice, tag: tag || 'New', image };
+            storeProducts.push(newProd);
+            localStorage.setItem('myStoreProducts', JSON.stringify(storeProducts));
+            
+            renderStore();
+            closeAdminModal();
+            alert("Product added successfully!");
         }
 
-        displayProducts();
+        function deleteProduct(id) {
+            storeProducts = storeProducts.filter(p => p.id !== id);
+            localStorage.setItem('myStoreProducts', JSON.stringify(storeProducts));
+            renderStore();
+        }
+
+        function addItemToBag(id) {
+            const product = storeProducts.find(p => p.id === id);
+            userCart.push(product);
+            document.getElementById('bag-count').innerText = userCart.length;
+            alert(product.name + " added to your bag!");
+        }
+
+        function openCartModal() {
+            const box = document.getElementById('modal-cart-items');
+            if(userCart.length === 0) {
+                box.innerHTML = "<p style='color:#6b7280; text-align:center;'>Your bag is empty.</p>";
+            } else {
+                let sumTotal = userCart.reduce((total, el) => total + el.price, 0);
+                box.innerHTML = userCart.map(el => `<div style="display:flex; justify-content:space-between; margin-bottom:6px;"><span>${el.name}</span><strong>₹${el.price}</strong></div>`).join('') + `<hr style="border:0; border-top:1px dashed #d1d5db; margin:8px 0;"><div style="display:flex; justify-content:space-between; font-weight:700;"><span>Total:</span><span>₹${sumTotal}</span></div>`;
+            }
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function closeCartModal() { document.getElementById('checkoutModal').style.display = 'none'; }
+
+        function sendOrderWhatsApp() {
+            const name = document.getElementById('userName').value;
+            const address = document.getElementById('userAddress').value;
+            const phone = document.getElementById('userPhone').value;
+
+            if(!name || !address || !phone) {
+                alert("Please complete delivery details.");
+                return;
+            }
+
+            let orderMsg = `🛍️ *New Order (AURA Store)*\n\n*Customer:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}\n\n*Items:*\n`;
+            let sumTotal = 0;
+            userCart.forEach(el => {
+                orderMsg += `• ${el.name} - ₹${el.price}\n`;
+                sumTotal += el.price;
+            });
+            orderMsg += `\n*Total: ₹${sumTotal}*`;
+
+            // Yahan apna WhatsApp number dal lena (jaise 919999999999)
+            window.open(`https://wa.me/919999999999?text=${encodeURIComponent(orderMsg)}`, '_blank');
+        }
+
+        renderStore();
     </script>
 </body>
 </html>
+
